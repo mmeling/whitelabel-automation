@@ -19,7 +19,8 @@ const SELECTORS = {
     DEFAULT: '~Nickname'
   },
   ADD_BUTTON: {
-    DEFAULT: '(//XCUIElementTypeStaticText[@name="Add Card"])[2]'
+    DEFAULT: '(//XCUIElementTypeStaticText[@name="Add Card"])[2]',
+    ZAXBYS: '~SAVE'
   }
 };
 
@@ -95,6 +96,15 @@ class ProfileCardAddScreen extends AppScreen {
       driver.hideKeyboard();
     }
     return this.clickAddCardButton();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

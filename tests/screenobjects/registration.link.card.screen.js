@@ -58,6 +58,15 @@ class RegistrationLinkCardScreen extends AppScreen {
     super.waitForIsShown(true);
     return button ? this.clickSkipCardButton() : this.clickSkipLocation();
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
 }
 
 export default new RegistrationLinkCardScreen();

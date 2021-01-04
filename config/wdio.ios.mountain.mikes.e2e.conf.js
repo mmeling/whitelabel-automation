@@ -9,13 +9,18 @@ const {
 // Specs
 // ============
 config.specs = [
-  './tests/specs/**/app*.spec.js',
+  './tests/specs/**/app.e2e.spec.js',
 ];
 
 // ============
 // Services
 // ============
 config.services = ['shared-store'];
+
+// ============
+// App Info
+// ============
+config.app = 'MOUNTAINMIKES';
 
 // ============
 // Capabilities
@@ -37,7 +42,7 @@ config.capabilities = [{
   // https://github.com/appium/appium/releases/tag/v1.13.0
   'appium:automationName': 'XCUITest',
   // The path to the app
-  'appium:app': join(process.cwd(), './apps/ios/zaxbys.app'),
+  'appium:app': join(process.cwd(), './apps/ios/mountain-mikes/MountainMikes.app'),
   // Read the reset strategies very well, they differ per platform, see
   // http://appium.io/docs/en/writing-running-appium/other/reset-strategies/
   'appium:noReset': true,

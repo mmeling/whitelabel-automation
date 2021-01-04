@@ -29,6 +29,15 @@ class LandingScreen extends AppScreen {
   clickSignInButton() {
     return this.signInButton.click();
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
 }
 
 export default new LandingScreen();

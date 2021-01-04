@@ -1,66 +1,66 @@
 class Order {
   constructor({
-    location,
-    items = [],
+    itemName,
+    itemPrice,
     subtotal,
     tax,
     tip,
     total
   } = {}) {
-    this._location = location;
-    this._items = items;
+    this._itemName = itemName;
+    this._itemPrice = itemPrice;
     this._subtotal = subtotal;
     this._tax = tax;
     this._tip = tip;
     this._total = total;
   }
 
-  set nameOnCard(nameOnCard) {
-    this._nameOnCard = nameOnCard;
+  set itemName(itemName) {
+    this._itemName = itemName;
   }
 
-  set number(number) {
-    this._number = number;
+  set itemPrice(itemPrice) {
+    this._itemPrice = itemPrice;
   }
 
-  set expM(expM) {
-    this._expM = expM;
+  set subtotal(subtotal) {
+    this._subtotal = subtotal;
   }
 
-  set expY(expY) {
-    this._expY = expY;
+  set tax(tax) {
+    this._tax = tax;
   }
 
-  set cvv(cvv) {
-    this._cvv = cvv;
+  set tip(tip) {
+    this._tip = tip;
   }
 
-  set issuer(issuer) {
-    this._issuer = issuer;
+  set total(total) {
+    this._total = total;
   }
 
-  get nameOnCard() {
-    return this._nameOnCard;
+  get itemName() {
+    return this._itemName;
   }
 
-  get number() {
-    return this._number;
+  get itemPrice() {
+    return this._itemPrice;
   }
 
-  get expM() {
-    return this._expM;
+  get subtotal() {
+    return this._subtotal;
   }
 
-  get expY() {
-    return this._expY;
+  get tax() {
+    return this._tax;
   }
 
-  get cvv() {
-    return this._cvv;
+  get tip() {
+    return this._tip;
   }
 
-  get issuer() {
-    return this._issuer;
+  get total() {
+    return this._total;
   }
 }
 

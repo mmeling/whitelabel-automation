@@ -2,36 +2,36 @@ import AppScreen from './app.screen';
 import NativeAlert from '../helpers/NativeAlert';
 
 const SELECTORS = {
-  SCREEN: '~SKIP',
-  SKIP_BUTTON: {
-    DEFAULT: '~SKIP'
-  },
+  SCREEN: '//XCUIElementTypeNavigationBar[@name="Rewards"]',
+  STATUS_COUNT: {
+    DEFAULT: '//XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]/XCUIElementTypeStaticText[2]'
+  }
 };
-
-// skip list
-const SKIPLIST = ['ZAXBYS'];
 
 class RewardsStatusScreen extends AppScreen {
   constructor() {
     super(SELECTORS.SCREEN);
   }
 
-  get skipButton() {
-    return $(super.app(SELECTORS.SKIP_BUTTON));
-  }
-
-  get alert() {
-    return NativeAlert;
-  }
-
-  clickSkipButton() {
-    return (SKIPLIST.includes(browser.config.app)) ? true : this.skipButton.click();
+  get Statusount() {
+    return $(super.app(SELECTORS.STATUS_COUNT));
   }
 
   /**
-   * Skip tutorial
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */ 
+  verifyScreen() {
+    return true;
+  }
+
+  /**
+   * Verify Status
+   * 
+   * This will take some additional work, and should be done in individual tests
    */
-  verifyStatus() {
+  verifyStatus(expected) {
     return true;
   }
 }

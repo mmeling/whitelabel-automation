@@ -7,7 +7,8 @@ const SELECTORS = {
     DEFAULT: '~Welcome back, LevelUp!'
   },
   ORDER_BUTTON: {
-    DEFAULT: '~Order Pick Up or Delivery Now'
+    DEFAULT: '~Order Pick Up or Delivery Now',
+    ZAXBYS: '//XCUIElementTypeStaticText[@name="ORDER NOW"]'
   },
   SCAN_BUTTON: {
     DEFAULT: '~Scan to Pay, Earn, & Redeem'
@@ -23,9 +24,16 @@ const SELECTORS = {
   }
 };
 
+// skip list
+const SKIPLIST = ['SMOOTHIEKING'];
+
 class HomeScreen extends AppScreen {
   constructor() {
     super(SELECTORS.SCREEN);
+  }
+
+  get alert() {
+    return NativeAlert;
   }
 
   get welcomeMessage() {
@@ -109,6 +117,28 @@ class HomeScreen extends AppScreen {
    */
   verifyWelcomeMessage(expected) {
     expect(this.welcomeMessage.text()).toEqual(expected);
+    return true;
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
+
+  /**
+   * Handle the location alert for whatever app may have it
+   * Could be a bug, who knows. Annoying AF though
+   */
+  handleLocationAlert() {
+    if (!SKIPLIST.includes(browser.config.app)) {
+      this.alert.waitForIsShown();
+      this.alert.pressButton('Cancel');
+      this.alert.waitForIsShown(false);
+    }
     return true;
   }
 }

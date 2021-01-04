@@ -4,12 +4,13 @@ import NativeAlert from '../helpers/NativeAlert';
 const SELECTORS = {
   SCREEN: '~SKIP',
   SKIP_BUTTON: {
-    DEFAULT: '~SKIP'
+    DEFAULT: '~SKIP',
+    ZAXBYS: '~Skip'
   },
 };
 
 // skip list
-const SKIPLIST = ['ZAXBYS'];
+const SKIPLIST = [];
 
 class TutorialScreen extends AppScreen {
   constructor() {
@@ -33,6 +34,15 @@ class TutorialScreen extends AppScreen {
    */
   skip() {
     return this.clickSkipButton();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

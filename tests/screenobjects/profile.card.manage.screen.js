@@ -4,7 +4,7 @@ import NativeAlert from '../helpers/NativeAlert';
 const SELECTORS = {
   SCREEN: '//XCUIElementTypeNavigationBar[@name="Payment Information"]',
   BACK_BUTTON: {
-    DEFAULT: '~Back'
+    DEFAULT: '//XCUIElementTypeButton[@name="Back"]'
   },
   ADD_CARD_BUTTON: {
     DEFAULT: '//XCUIElementTypeStaticText[@name="Add a payment card"]'
@@ -28,6 +28,7 @@ class ProfileCardManageScreen extends AppScreen {
    * Click Back button
    */
   clickBackButton() {
+    console.log('Back to Main Screen');
     return this.backButton.click();
   }
 
@@ -72,6 +73,15 @@ class ProfileCardManageScreen extends AppScreen {
   }) {
     super.waitForIsShown(true);
     return button ? this.clickAddCardButton() : this.clickAddCardLocation();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

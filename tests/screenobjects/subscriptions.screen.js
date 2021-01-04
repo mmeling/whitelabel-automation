@@ -14,10 +14,7 @@ const SELECTORS = {
   }
 };
 
-// skip list
-const SKIPLIST = ['ZAXBYS'];
-
-class RewardsScreen extends AppScreen {
+class SubscriptionsScreen extends AppScreen {
   constructor() {
     super(SELECTORS.SCREEN);
   }
@@ -40,16 +37,13 @@ class RewardsScreen extends AppScreen {
    * @return {bool}
    */
   clickRewards() {
-    if (!SKIPLIST.includes(browser.config.app)) {
-      console.log('Click Rewards Tab');
-      driver.pause(3000);
-      return browser.touchAction({
-        action: 'tap',
-        x: 110,
-        y: 110
-      });
-    }
-    return true;
+    console.log('Click Rewards Tab');
+    driver.pause(3000);
+    return browser.touchAction({
+      action: 'tap',
+      x: 110,
+      y: 110
+    });
   }
 
   /**
@@ -58,16 +52,13 @@ class RewardsScreen extends AppScreen {
    * @return {bool}
    */
   clickStatus() {
-    if (!SKIPLIST.includes(browser.config.app)) {
-      console.log('Click Status Tab');
-      driver.pause(3000);
-      return browser.touchAction({
-        action: 'tap',
-        x: 310,
-        y: 110
-      });
-    }
-    return true;
+    console.log('Click Status Tab');
+    driver.pause(3000);
+    return browser.touchAction({
+      action: 'tap',
+      x: 310,
+      y: 110
+    });
   }
 
   /**
@@ -90,4 +81,4 @@ class RewardsScreen extends AppScreen {
   }
 }
 
-export default new RewardsScreen();
+export default new SubscriptionsScreen();

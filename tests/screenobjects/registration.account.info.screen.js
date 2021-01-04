@@ -17,9 +17,8 @@ const SELECTORS = {
   JOIN_BUTTON: {
     DEFAULT: '~JOIN',
     SMOOTHIEKING: `//XCUIElementTypeStaticText[@name="Get Started!"]`,
-    ZAXBYS: `~JOIN ZAXBY'S`,
-    SWEETGREEN: `~JOIN SWEETGREENS`,
-    TROPICALSMOOTHIE: `~JOIN TROPICAL SMOOTHIE`
+    ZAXBYS: `~JOIN ZAX FANZ CLUB`,
+    SWEETGREEN: `~JOIN SWEETGREENS`
   }
 };
 
@@ -82,6 +81,15 @@ class RegistrationAccountInfoScreen extends AppScreen {
       driver.hideKeyboard();
     }
     return this.clickJoinButton();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

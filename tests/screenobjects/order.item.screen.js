@@ -4,10 +4,12 @@ import NativeAlert from '../helpers/NativeAlert';
 const SELECTORS = {
   SCREEN: '//XCUIElementTypeTable[@name="Item Options Table"]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeImage',
   UNFILLED_RADIO: {
-    DEFAULT: '(//XCUIElementTypeButton[@name="radioUnfilled"])[1]'
+    DEFAULT: '(//XCUIElementTypeButton[@name="radioUnfilled"])[1]',
+    ZAXBYS: '(//XCUIElementTypeButton[@name="userFormCheckOff"])[1]'
   },
   ADD_TO_ORDER_BUTTON: {
-    DEFAULT: '//XCUIElementTypeButton[contains(@name,"Add to Order")]'
+    DEFAULT: '//XCUIElementTypeButton[contains(@name,"Add to Order")]',
+    ZAXBYS: '//XCUIElementTypeButton[contains(@name,"ADD TO ORDER")]'
   }
 };
 
@@ -42,6 +44,15 @@ class OrderItemScreen extends AppScreen {
   clickAddToOrderButton() {
     console.log('Click Add to Order Button');
     return this.addToOrderButton.click();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

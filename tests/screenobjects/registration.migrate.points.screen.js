@@ -5,7 +5,7 @@ const SELECTORS = {
 };
 
 // skip list
-const SKIPLIST = ['SMOOTHIEKING'];
+const SKIPLIST = ['SMOOTHIEKING', 'ZAXBYS'];
 
 class RegistrationMigratePointsScreen extends AppScreen {
   constructor() {
@@ -37,6 +37,15 @@ class RegistrationMigratePointsScreen extends AppScreen {
       super.waitForIsShown(true);
       return this.clickSkipButton();
     }
+    return true;
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
     return true;
   }
 }

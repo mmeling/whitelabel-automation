@@ -20,7 +20,7 @@ config.services = ['shared-store'];
 // ============
 // App Info
 // ============
-config.app = 'POTBELLY';
+config.app = 'KUNGFUTEA';
 
 // ============
 // Capabilities
@@ -42,7 +42,7 @@ config.capabilities = [{
   // https://github.com/appium/appium/releases/tag/v1.13.0
   'appium:automationName': 'XCUITest',
   // The path to the app
-  'appium:app': join(process.cwd(), './apps/ios/potbelly/Potbelly.app'),
+  'appium:app': join(process.cwd(), './apps/ios/kung-fu-tea/KungFuTea.app'),
   // Read the reset strategies very well, they differ per platform, see
   // http://appium.io/docs/en/writing-running-appium/other/reset-strategies/
   'appium:noReset': true,

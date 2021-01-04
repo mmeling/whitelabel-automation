@@ -4,7 +4,18 @@
   "description": "Boilerplate to run tests against iOS app",
   "scripts": {
     "ios.login": "./node_modules/.bin/wdio ./config/wdio.ios.login.conf.js",
+    "ios.bluestone.lane.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.bob.evans.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.freshii.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.kung.fu.tea.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.mountain.mikes.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.pita.pit.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.potbelly.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.scooters.coffee.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
     "ios.smoothie.king.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.sweetgreens.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.tcby.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.smoothie.king.e2e.conf.js",
+    "ios.zaxbys.e2e": "./node_modules/.bin/wdio ./config/wdio.ios.zaxbys.e2e.conf.js",
     "lint": "eslint config tests"
   },
   "repository": {

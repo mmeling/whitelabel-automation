@@ -31,6 +31,15 @@ class LocationMapScreen extends AppScreen {
       y: 600
     });
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
 }
 
 export default new LocationMapScreen();

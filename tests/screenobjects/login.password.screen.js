@@ -95,6 +95,15 @@ class LoginPasswordScreen extends AppScreen {
     this.alert.waitForIsShown(false);
     return true;
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
 }
 
 export default new LoginPasswordScreen();

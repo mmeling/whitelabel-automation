@@ -18,22 +18,25 @@ config.specs = [
 config.services = ['shared-store'];
 
 // ============
+// App Info
+// ============
+config.app = 'ZAXBYS';
+
+// ============
 // Capabilities
 // ============
 // For all capabilities please check
 // http://appium.io/docs/en/writing-running-appium/caps/#general-capabilities
 config.capabilities = [{
-  // Globals
-  globals: {},
   // The defaults you need to have in your config
-  app: 'ZAXBYS',
+  app: 'DEFAULT',
   platformName: 'iOS',
   maxInstances: 1,
   // For W3C the appium capabilities need to have an extension prefix
   // This is `appium:` for all Appium Capabilities which can be found here
   // http://appium.io/docs/en/writing-running-appium/caps/
   'appium:deviceName': 'iPhone 11',
-  'appium:platformVersion': '13.5',
+  'appium:platformVersion': '14.1',
   'appium:orientation': 'PORTRAIT',
   // `automationName` will be mandatory, see
   // https://github.com/appium/appium/releases/tag/v1.13.0

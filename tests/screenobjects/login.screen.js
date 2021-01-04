@@ -61,6 +61,16 @@ class LoginScreen extends AppScreen {
     this.alert.waitForIsShown(false);
     return true;
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    expect(FormScreen.getDropDownText()).toContain(valueTwo);
+    return true;
+  }
 }
 
 export default new LoginScreen();

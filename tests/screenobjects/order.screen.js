@@ -19,7 +19,8 @@ const SELECTORS = {
     DEFAULT: '~edit'
   },
   ORDER_NOW_BUTTON: {
-    DEFAULT: '//XCUIElementTypeStaticText[@name="Order Now"]'
+    DEFAULT: '//XCUIElementTypeStaticText[@name="Order Now"]',
+    ZAXBYS: '//XCUIElementTypeStaticText[@name="ORDER NOW"]'
   },
 };
 
@@ -80,6 +81,15 @@ class OrderScreen extends AppScreen {
   clickOrderNowButton() {
     console.log('Click Order Now Button');
     return this.orderNowButton.click();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

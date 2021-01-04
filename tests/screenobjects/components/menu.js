@@ -2,10 +2,22 @@ import AppScreen from '../app.screen';
 import NativeAlert from '../../helpers/NativeAlert';
 
 const SELECTORS = {
-  SCREEN: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
-  MENU_OPEN_BUTTON: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
-  SCREEN_RETURN: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
-  MENU_OPEN_BUTTON_RETURN: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
+  SCREEN: {
+    DEFAULT: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
+    ZAXBYS: '//XCUIElementTypeButton[@name="luui side nav button"]'
+  },
+  MENU_OPEN_BUTTON: {
+    DEFAULT: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
+    ZAXBYS: '//XCUIElementTypeButton[@name="luui side nav button"]'
+  },
+  SCREEN_RETURN: {
+    DEFAULT: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
+    ZAXBYS: '//XCUIElementTypeButton[@name="luui side nav button"]'
+  },
+  MENU_OPEN_BUTTON_RETURN: {
+    DEFAULT: '//XCUIElementTypeButton[contains(@name,"Open sidebar menu.")]',
+    ZAXBYS: '//XCUIElementTypeButton[@name="luui side nav button"]'
+  },
   MENU_CLOSE_BUTTON: '~Close sidebar menu.',
   PROFILE_LINK: {
     DEFAULT: '//XCUIElementTypeStaticText[@name="Profile"]'
@@ -16,14 +28,25 @@ const SELECTORS = {
   CARDS_LINK: {
     DEFAULT: '~Manage Cards'
   },
+  LOCATIONS_LINK: {
+    DEFAULT: '~Locations'
+  },
   SCAN_LINK: {
-    DEFAULT: '//XCUIElementTypeStaticText[@name="Scan to Add Rewards"]'
+    DEFAULT: '//XCUIElementTypeStaticText[@name="Scan to Add Rewards"]',
+    ZAXBYS: '//XCUIElementTypeStaticText[@name="Claim Reward"]'
+  },
+  SUBSCRIPTIONS_LINK: {
+    DEFAULT: '//XCUIElementTypeStaticText[@name="Manage Your Subscriptions"]'
+  },
+  GIFT_CARD_LINK: {
+    DEFAULT: '//XCUIElementTypeStaticText[@name="Digitize Gift Card"]'
   },
   PIN_LINK: {
     DEFAULT: '//XCUIElementTypeStaticText[@name="Enable PIN Lock"]'
   },
   SUPPORT_LINK: {
-    DEFAULT: '//XCUIElementTypeStaticText[@name="Guest Support"]'
+    DEFAULT: '//XCUIElementTypeStaticText[@name="Guest Support"]',
+    ZAXBYS: '//XCUIElementTypeStaticText[@name="Customer Support"]'
   },
   TUTORIAL_LINK: {
     DEFAULT: '//XCUIElementTypeStaticText[@name="Tutorial"]'
@@ -45,12 +68,19 @@ const SELECTORS = {
   },
   ENHANCERS_LINK: { // SMOOTHIEKING
     SMOOTHIEKING: `//XCUIElementTypeStaticText[@name="Enhancers & Extras"]`
+  },
+  HOME_SCREEN_REWARDS: { // SMOOTHIEKING
+    SMOOTHIEKING: `~Redeem Healthy Rewards`,
+    ZAXBYS: `~REWARDS`
   }
 };
 
+// skip list
+const HOME_SCREEN_REWARDS = ['SMOOTHIEKING', 'ZAXBYS'];
+
 class Menu extends AppScreen {
   constructor() {
-    super(SELECTORS.SCREEN);
+    super(SELECTORS.SCREEN[(SELECTORS.SCREEN.hasOwnProperty(browser.config.app)) ? browser.config.app : 'DEFAULT']);
   }
 
   get alert() {
@@ -77,8 +107,20 @@ class Menu extends AppScreen {
     return $(super.app(SELECTORS.CARDS_LINK));
   }
 
+  get locationsLink() {
+    return $(super.app(SELECTORS.LOCATIONS_LINK));
+  }
+
   get scanLink() {
     return $(super.app(SELECTORS.SCAN_LINK));
+  }
+
+  get subscriptionsLink() {
+    return $(super.app(SELECTORS.SUBSCRIPTIONS_LINK));
+  }
+
+  get giftCardLink() {
+    return $(super.app(SELECTORS.GIFT_CARD_LINK));
   }
 
   get pinLink() {
@@ -121,6 +163,10 @@ class Menu extends AppScreen {
     return $(super.app(SELECTORS.ENHANCERS_LINK));
   }
 
+  get homeScreenRewards() {
+    return $(super.app(SELECTORS.HOME_SCREEN_REWARDS));
+  }
+
   clickProfileLink() {
     return this.profileLink.click();
   }
@@ -133,8 +179,20 @@ class Menu extends AppScreen {
     return this.cardsLink.click();
   }
 
+  clickLocationsLink() {
+    return this.locationsLink.click();
+  }
+
   clickScanLink() {
     return this.scanLink.click();
+  }
+
+  clickSubscriptionsLink() {
+    return this.subscriptionsLink.click();
+  }
+
+  clickGiftCardLink() {
+    return this.giftCardLink.click();
   }
 
   clickPINLink() {
@@ -175,6 +233,10 @@ class Menu extends AppScreen {
 
   clickEnhancersLink() {
     return this.enhancersLink.click();
+  }
+
+  clickHomeScreenRewards() {
+    return this.homeScreenRewards.click();
   }
 
 
@@ -280,14 +342,54 @@ class Menu extends AppScreen {
 
   /**
    * Account:
+   * Open Locations
+   */
+  openLocations({
+    returning = false
+  }) {
+    console.log(`\t - Open Locations`);
+    this.openMenu(returning);
+    this.clickLocationsLink();
+    return true;
+  }
+
+  /**
+   * Account:
+   * Open Subscriptions
+   */
+  openSubscriptions({
+    returning = false
+  }) {
+    console.log(`\t - Open Subscriptions`);
+    this.openMenu(returning);
+    return this.clickSubscriptionsLink();
+  }
+
+  /**
+   * Account:
    * Open Rewards
    */
   openRewards({
     returning = false
   }) {
     console.log(`\t - Open Rewards`);
+    if (HOME_SCREEN_REWARDS.includes(browser.config.app)) {
+      return this.clickHomeScreenRewards();
+    }
     this.openMenu(returning);
     return this.clickRewardsLink();
+  }
+
+  /**
+   * Account:
+   * Open Gift Cards
+   */
+  openGiftCards({
+    returning = false
+  }) {
+    console.log(`\t - Open Gift Cards`);
+    this.openMenu(returning);
+    return this.clickGiftCardLink();
   }
 
   /**
@@ -310,7 +412,7 @@ class Menu extends AppScreen {
    */
   enablePIN(pin) {
     console.log(`\t - Enable PIN`);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickPINLink();
   }
 
@@ -322,7 +424,7 @@ class Menu extends AppScreen {
    */
   disablePIN(pin) {
     console.log(`\t - Disable PIN`);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickPINLink();
   }
 
@@ -330,9 +432,11 @@ class Menu extends AppScreen {
    * Security & Help:
    * Open Support
    */
-  openSupport() {
+  openSupport({
+    returning = false
+  }) {
     console.log(`\t - Open Support`);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickSupportLink();
   }
 
@@ -340,9 +444,11 @@ class Menu extends AppScreen {
    * Security & Help:
    * Open Tutorial
    */
-  openTutorial() {
+  openTutorial({
+    returning = false
+  }) {
     console.log(`\t - Open Tutorial`);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickTutorialLink();
   }
 
@@ -369,30 +475,36 @@ class Menu extends AppScreen {
   /**
    * Open Facebook
    */
-  openFacebook() {
+  openFacebook({
+    returning = false
+  }) {
     console.log(`\t - Open Facebook`);
     super.waitForIsShown(true);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickFacebookLink();
   }
 
   /**
    * Open Instagram
    */
-  openInstagram() {
+  openInstagram({
+    returning = false
+  }) {
     console.log(`\t - Open Instagram`);
     super.waitForIsShown(true);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickInstagramLink();
   }
 
   /**
    * Open Twitter
    */
-  openTwitter() {
+  openTwitter({
+    returning = false
+  }) {
     console.log(`\t - Open Twitter`);
     super.waitForIsShown(true);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickTwitterLink();
   }
 
@@ -408,10 +520,12 @@ class Menu extends AppScreen {
    * Menu:
    * Open Smoothies
    */
-  openSmoothies() {
+  openSmoothies({
+    returning = false
+  }) {
     console.log(`\t - Open Smoothies`);
     super.waitForIsShown(true);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickSmoothiesLink();
   }
 
@@ -419,10 +533,12 @@ class Menu extends AppScreen {
    * Menu:
    * Open Enhancers
    */
-  openEnhancers() {
+  openEnhancers({
+    returning = false
+  }) {
     console.log(`\t - Open Enhancers`);
     super.waitForIsShown(true);
-    this.openMenu();
+    this.openMenu(returning);
     return this.clickEnhancersLink();
   }
 }

@@ -13,7 +13,8 @@ const SELECTORS = {
     DEFAULT: '~Instant Billing'
   },
   CONFIRM_BUTTON: {
-    DEFAULT: '//XCUIElementTypeStaticText[@name="Confirm"]'
+    DEFAULT: '//XCUIElementTypeStaticText[@name="Confirm"]',
+    ZAXBYS: '~CONFIRM'
   }
 };
 
@@ -64,6 +65,15 @@ class ProfileCardPreferencesScreen extends AppScreen {
    */
   clickConfirmButton() {
     return this.confirmButton.click();
+  }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
   }
 }
 

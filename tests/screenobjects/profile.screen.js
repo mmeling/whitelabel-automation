@@ -2,22 +2,29 @@ import AppScreen from './app.screen';
 import NativeAlert from '../helpers/NativeAlert';
 
 const SELECTORS = {
-  SCREEN: '//XCUIElementTypeStaticText[@name="Receipt"]',
-  TOP_RECEIPT: {
-    DEFAULT: '//XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeStaticText[2]'
+  SCREEN: '//XCUIElementTypeNavigationBar[@name="Rewards"]',
+  REWARDS_TAB: {
+    DEFAULT: '//XCUIElementTypeButton[@name="Rewards"]'
+  },
+  STATUS_TAB: {
+    DEFAULT: '//XCUIElementTypeButton[@name="Status"]'
   },
   BACK_BUTTON: {
     DEFAULT: '~Back'
   }
 };
 
-class HistoryScreen extends AppScreen {
+class ProfileScreen extends AppScreen {
   constructor() {
     super(SELECTORS.SCREEN);
   }
 
-  get topReceipt() {
-    return $(super.app(SELECTORS.TOP_RECEIPT));
+  get rewardsTab() {
+    return $(super.app(SELECTORS.REWARDS_TAB));
+  }
+
+  get statusTab() {
+    return $(super.app(SELECTORS.STATUS_TAB));
   }
 
   get backButton() {
@@ -25,32 +32,37 @@ class HistoryScreen extends AppScreen {
   }
 
   /**
-   * Select Open Order
+   * Click Rewards
    *
    * @return {bool}
    */
-  selectOpenOrder() {
-    console.log('Select Open Order');
+  clickRewards() {
+    console.log('Click Rewards Tab');
     driver.pause(3000);
     return browser.touchAction({
       action: 'tap',
-      x: 390,
+      x: 110,
       y: 110
     });
   }
 
   /**
-   * Select Top Receipt
+   * Select Status
    *
    * @return {bool}
    */
-  selectTopReceipt() {
-    console.log('Select Top Receipt');
-    return this.topReceipt.click();
+  clickStatus() {
+    console.log('Click Status Tab');
+    driver.pause(3000);
+    return browser.touchAction({
+      action: 'tap',
+      x: 310,
+      y: 110
+    });
   }
 
   /**
-   * Click Place Order Button
+   * Select Back Button
    *
    * @return {bool}
    */
@@ -69,4 +81,4 @@ class HistoryScreen extends AppScreen {
   }
 }
 
-export default new HistoryScreen();
+export default new ProfileScreen();

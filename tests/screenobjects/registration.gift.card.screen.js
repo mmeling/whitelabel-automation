@@ -1,15 +1,19 @@
 import AppScreen from './app.screen';
 
 const SELECTORS = {
-  SCREEN: {
-    DEFAULT: '//XCUIElementTypeNavigationBar[@name="Optional Info"]',
-    ZAXBYS: '//XCUIElementTypeNavigationBar[@name="Additional Info"]'
-  },
+  SCREEN: '//XCUIElementTypeNavigationBar[@name="Digitize Gift Card"]'
 };
 
-class RegistrationOptionalInfoScreen extends AppScreen {
+// skip list
+const SKIPLIST = ['SMOOTHIEKING'];
+
+class RegistrationGiftCardScreen extends AppScreen {
   constructor() {
-    super(SELECTORS.SCREEN[(SELECTORS.SCREEN.hasOwnProperty(browser.config.app)) ? browser.config.app : 'DEFAULT']);
+    super(SELECTORS.SCREEN);
+  }
+
+  get screen() {
+    return $(SELECTORS.SCREEN);
   }
 
   clickSkipButton() {
@@ -29,8 +33,11 @@ class RegistrationOptionalInfoScreen extends AppScreen {
    * @return {bool}
    */
   skip() {
-    super.waitForIsShown(true);
-    return this.clickSkipButton();
+    if (!SKIPLIST.includes(browser.config.app)) {
+      super.waitForIsShown(true);
+      return this.clickSkipButton();
+    }
+    return true;
   }
 
   /**
@@ -43,4 +50,4 @@ class RegistrationOptionalInfoScreen extends AppScreen {
   }
 }
 
-export default new RegistrationOptionalInfoScreen();
+export default new RegistrationGiftCardScreen();

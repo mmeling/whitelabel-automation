@@ -58,6 +58,15 @@ class RegistrationPurposeScreen extends AppScreen {
     }
     return true;
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
 }
 
 export default new RegistrationPurposeScreen();

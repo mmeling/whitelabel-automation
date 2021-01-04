@@ -3,8 +3,8 @@ import NativeAlert from '../helpers/NativeAlert';
 
 const SELECTORS = {
   SCREEN: '//XCUIElementTypeStaticText[@name="Order Submitted"]',
-  CLOSE_BUTTON: {
-    DEFAULT: '~Done'
+  BACK_BUTTON: {
+    DEFAULT: '~Back'
   },
   TOP_ITEM_NAME: {
     DEFAULT: '//XCUIElementTypeTable[@name="Completed Order Table"]/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]'
@@ -28,13 +28,13 @@ const SELECTORS = {
 // Does the page use value instead of name
 const ATTRIBUTE_VALUE = ['ZAXBYS'];
 
-class OrderSubmittedScreen extends AppScreen {
+class HistoryOpenOrderScreen extends AppScreen {
   constructor() {
     super(SELECTORS.SCREEN);
   }
 
-  get closeButton() {
-    return $(super.app(SELECTORS.CLOSE_BUTTON));
+  get backButton() {
+    return $(super.app(SELECTORS.BACK_BUTTON));
   }
 
   get topItemName() {
@@ -58,13 +58,13 @@ class OrderSubmittedScreen extends AppScreen {
   }
 
   /**
-   * Click Close Button
+   * Click Back Button
    *
    * @return {bool}
    */
-  clickCloseButton() {
-    console.log('Click Close Button');
-    return this.closeButton.click();
+  clickBackButton() {
+    console.log('Click Back Button');
+    return this.backButton.click();
   }
 
   /**
@@ -95,4 +95,4 @@ class OrderSubmittedScreen extends AppScreen {
   }
 }
 
-export default new OrderSubmittedScreen();
+export default new HistoryOpenOrderScreen();

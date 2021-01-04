@@ -31,6 +31,15 @@ class LocationDetailsScreen extends AppScreen {
       y: 650
     });
   }
+
+  /**
+   * Basic validation
+   * 
+   * Verify all elements are visible 
+   */
+  verifyScreen() {
+    return true;
+  }
 }
 
 export default new LocationDetailsScreen();

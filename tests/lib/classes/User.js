@@ -84,16 +84,16 @@ class User {
   }
 
   addOrder({
-    location,
-    items,
+    itemName,
+    itemPrice,
     subtotal,
     tax,
     tip,
     total
   }) {
     return this._orders.push(new Order({
-      location,
-      items,
+      itemName,
+      itemPrice,
       subtotal,
       tax,
       tip,
